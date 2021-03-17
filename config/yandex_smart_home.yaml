@@ -1,0 +1,8 @@
+yandex_smart_home:
+  filter:
+   include_domains:
+     - climate
+     - switch
+     - light
+     - fan
+     - vacuum

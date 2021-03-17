@@ -1,0 +1,7 @@
+default: info
+logs:
+  homeassistant.components: warning
+  homeassistant.loadder: warning
+  homeassistant.helpers.entity: warning
+  homeassistant.components.binary_sensor.zona_1: warning
+  homeassistant.components.binary_sensor.zona_2: warning

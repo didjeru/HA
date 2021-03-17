@@ -1,0 +1,19 @@
+automation:
+  - alias: Privet TTS
+    trigger:
+      platform: device
+      device_id: ef6a8d2921ac2ee48e38341869d25903
+      domain: device_tracker
+      entity_id: device_tracker.mi_8
+      type: enters
+      zone: zone.home
+    action:
+      service: notify.mobile_app_mi_8
+      data:
+        title: Добро пожаловать домой!
+        message: TTS
+        data:
+          channel: alarm_stream_max
+          ttl: 0
+          priority: high
+

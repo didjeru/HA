@@ -1,0 +1,24 @@
+camera:
+  - platform: xiaomi_cloud_map_extractor
+    host: !secret vacuum_ip
+    token: !secret vacuum_token
+    username: !secret xiaomi_cloud_username
+    password: !secret xiaomi_cloud_password
+    country: "ru"
+    scan_interval:
+      seconds: 30
+    draw: ['all']
+    attributes:
+      - charger
+      - goto
+      - goto_path
+      - goto_predicted_path
+      - image
+      - no_go_areas
+      - no_mopping_areas
+      - obstacles
+      - path
+      - vacuum_position
+      - walls
+      - zones
+      - calibration_points

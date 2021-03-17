@@ -1,0 +1,13 @@
+panel_custom:
+  - name: iframe-fullscreen
+    module_url: "/local/iframe-fullscreen.js"
+    sidebar_title: 'iframe1'
+    url_path: iframe1
+    config:
+      url: "http://192.168.0.16:6052/"
+  - name: iframe-fullscreen
+    module_url: "/local/iframe-fullscreen.js"
+    sidebar_title: 'iframe2'
+    url_path: iframe2
+    config:
+      url: "http://192.168.0.16:9000/"

@@ -1,0 +1,82 @@
+automation:
+  - alias: TLG notify HA start
+    trigger:
+      platform: homeassistant
+      event: start
+    action:
+      service: notify.me
+      data:
+        message: "Умный дом - запустился"
+
+  - alias: APP notify Update
+    trigger:
+      platform: state
+      entity_id: binary_sensor.updater
+      from: 'off'
+      to: 'on'
+    action:
+      service: notify.notify
+      data:
+        message: "Умный дом - доступна новая версия {{ state_attr('binary_sensor.updater', 'newest_version') }}"
+
+  - alias: APP notify Alarm
+    trigger:
+      platform: state
+      entity_id: binary_sensor.alarm
+      from: 'off'
+      to: 'on'
+    action:
+      service: notify.notify
+      data:
+        message: "Умный дом - ALARM!!!"
+        data:
+          color: '#ff2424'
+          sticky: 'true'
+          vibrationPattern: "100, 1000, 100, 1000, 100"
+
+  - alias: APP notify Arm
+    trigger:
+      platform: state
+      entity_id: binary_sensor.arm
+    action:
+      service: notify.notify
+      data:
+        message: "Умный дом {{ 'поставлен на охрану' if states.binary_sensor.arm.state == 'off' else 'снят с охраны' }}."
+
+  - alias: TLG notify Alarm
+    trigger:
+      platform: state
+      entity_id: binary_sensor.alarm
+      from: 'off'
+      to: 'on'
+    action:
+      service: notify.me
+      data:
+        message: "Умный дом - ALARM!!!"
+
+  - alias: APP alarm TTS
+    trigger:
+      platform: state
+      entity_id: binary_sensor.alarm
+      from: 'off'
+      to: 'on'
+    action:
+      service: notify.notify
+      data:
+        title: Внимание сработала сигнализация!
+        message: TTS
+        data:
+          channel: alarm_stream_max
+          ttl: 0
+          priority: high
+
+  #- alias: megad_get
+  #  trigger:
+  #    platform: time_pattern
+  #    minutes: "/2"
+  #  action:
+  #    service: downloader.download_file
+  #    data_template:
+  #      url: "http://192.168.0.14/kak/?cmd=all"
+  #      filename: "devices.txt"
+  #      overwrite: "true"

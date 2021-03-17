@@ -1,0 +1,63 @@
+homeassistant:
+  name: Orbital
+  latitude: !secret latitude_coord
+  longitude: !secret longitude_coord
+  elevation: 100
+  unit_system: metric
+  time_zone: Asia/Novosibirsk
+  packages: !include_dir_named config
+
+downloader:
+  download_dir: downloads
+
+default_config:
+
+http:
+  ip_ban_enabled: true 
+  ssl_certificate: fullchain.pem
+  ssl_key: privkey.pem
+
+history: !include logging/history.yaml
+logbook: !include logging/logbook.yaml
+logger: !include logging/logger.yaml
+
+device_tracker:
+  - platform: huawei_router
+    host: !secret huaip
+    username: !secret hualog
+    password: !secret huapas
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret api_key_telega
+    parse_mode: html
+    allowed_chat_ids:
+      - !secret chatid_telegram
+notify:
+  - name: me
+    platform: telegram
+    chat_id: !secret chatid_telegram
+
+yandex_station:
+  username: !secret yandex_user
+  password: !secret yandex_pass
+
+# vacuum:
+#   - platform: xiaomi_miio
+#     name: Roborock Vacuum S5
+#     host: !secret vacuum_ip
+#     token: !secret vacuum_token
+#     max_check_attempts: 3
+#     retry_interval: 5m
+#     scan_interval:
+#       seconds: 30
+
+# xiaomi_miio_cooker:
+#   name: Xiaomi Induction Cooker
+#   host: !secret cooker_ip
+#   token: !secret cooker_token
+#   model: chunmi.ihcooker.exp1
+
+# xiaomi_miot:
+#   username: !secret xiaomi_cloud_username
+#   password: !secret xiaomi_cloud_password

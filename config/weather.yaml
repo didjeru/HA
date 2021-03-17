@@ -1,0 +1,9 @@
+weather:
+  - platform: gismeteo
+    name: Novosibirsk
+    latitude: 55.0415000
+    longitude: 82.9346000
+  - platform: gismeteo
+    name: Bobrovka
+    latitude: 53.1836100
+    longitude: 83.8763900

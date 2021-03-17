@@ -1,0 +1,55 @@
+binary_sensor:
+  - platform: rest
+    name: door
+    device_class: door
+    resource: http://192.168.0.14/kak/?pt=30&cmd=get
+    value_template: >
+      {% set val = value.split("/")[0] %}
+      {% if val == 'ON' %}
+        OFF
+      {% elif val == 'OFF' %}
+        ON
+      {% endif %}
+    scan_interval: 5
+  - platform: rest
+    name: zone_1
+    device_class: motion
+    resource: http://192.168.0.14/kak/?pt=32&cmd=get
+    value_template: >
+      {% set val = value.split("/")[0] %}
+      {% if val == 'ON' %}
+        OFF
+      {% elif val == 'OFF' %}
+        ON
+      {% endif %}
+    scan_interval: 5
+  - platform: rest
+    name: zone_2
+    device_class: motion   
+    resource: http://192.168.0.14/kak/?pt=33&cmd=get
+    value_template: >
+      {% set val = value.split("/")[0] %}
+      {% if val == 'ON' %}
+        OFF
+      {% elif val == 'OFF' %}
+        ON
+      {% endif %}
+    scan_interval: 5
+  - platform: rest
+    name: alarm
+    device_class: light
+    resource: http://192.168.0.14/kak/?pt=31&cmd=get
+    value_template: "{{ value.split(\"/\")[0] }}"
+    scan_interval: 1
+  - platform: rest
+    name: arm
+    device_class: safety
+    resource: http://192.168.0.14/kak/?pt=36&cmd=get
+    value_template: "{{ value.split(\"/\")[0] }}"
+    scan_interval: 1
+  - platform: rest
+    name: diod
+    device_class: light
+    resource: http://192.168.0.14/kak/?pt=34&cmd=get
+    value_template: "{{ value.split(\"/\")[0] }}"
+    scan_interval: 1

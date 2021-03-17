@@ -1,0 +1,15 @@
+{
+    "domain": "gismeteo",
+    "name": "Gismeteo",
+    "version": "2.1.1",
+    "documentation": "https://github.com/Limych/ha-gismeteo",
+    "issue_tracker": "https://github.com/Limych/ha-blueprint/issues",
+    "dependencies": [
+        "weather"
+    ],
+    "config_flow": true,
+    "codeowners": [
+        "@Limych"
+    ],
+    "requirements": []
+}

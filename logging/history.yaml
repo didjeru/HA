@@ -1,0 +1,6 @@
+exclude:
+  domains:
+    - automation
+  entity_globs:
+    - binary_sensor.zone_1
+    - binary_sensor.zone_2

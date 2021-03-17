@@ -1,0 +1,51 @@
+- id: '1615802246119'
+  alias: notify my in phone
+  description: ''
+  trigger:
+  - platform: device
+    device_id: ef6a8d2921ac2ee48e38341869d25903
+    domain: device_tracker
+    entity_id: device_tracker.mi_8_2
+    type: enters
+    zone: zone.home
+  condition: []
+  action:
+  - service: notify.mobile_app_mi_8
+    data: {}
+  mode: single
+- id: '1615802332703'
+  alias: notify me in phone
+  description: ''
+  trigger:
+  - platform: device
+    device_id: ef6a8d2921ac2ee48e38341869d25903
+    domain: device_tracker
+    entity_id: device_tracker.mi_8_2
+    type: enters
+    zone: zone.home
+  condition: []
+  action:
+  - service: notify.mobile_app_mi_8
+    data: {}
+  mode: single
+- id: '1615802786342'
+  alias: notify me in phone
+  description: ''
+  trigger:
+  - platform: device
+    device_id: ef6a8d2921ac2ee48e38341869d25903
+    domain: device_tracker
+    entity_id: device_tracker.mi_8_2
+    type: enters
+    zone: zone.home
+  condition: []
+  action:
+  - service: notify.mobile_app_mi_8
+    data:
+      message: TTS
+      title: Добро пожаловать домой!
+      data:
+        channel: alarm_stream_max
+        ttl: 0
+        priority: high
+  mode: single

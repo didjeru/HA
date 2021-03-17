@@ -1,0 +1,8 @@
+binary_sensor:
+  - platform: rest
+    name: Post
+    resource: 'https://https://www.pochta.ru/tracking#RM025158163HK'
+    headers: {User-Agent: Home Assistant}
+    device_class: connectivity
+    value_template: '{{ "Порт&nbsp;открыт" in value }}'
+    scan_interval: '24:00:00'
